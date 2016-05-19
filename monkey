@@ -2,8 +2,8 @@
   adb devices 显示设备list of devices attached是空的
 解决一：
   进入到这个目录：D:\adt-bundle-windows-x86_64-20140702\sdk\platform-tools
-  cmd 指令：adb-killserver
-            adb-startserver
+  cmd 指令：adb kill-server
+            adb start-server
 问题：
    查看Android应用包名package和入口activity名称
 使用android自动化测试工具monkeyrunner启动应用时，需要填写被测程序的包名和启动的Activity，以下有两种查看应用包名package和入口activity名称的方法：
