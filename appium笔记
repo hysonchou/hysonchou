@@ -109,6 +109,123 @@ ERROR:  Could not find a valid gem 'appium_lib' (>= 0), here is why:
           Unable to download data from https://ruby.taobao.org/ - no such name (https://ruby.taobao.org/latest_specs.4.8.gz)
 ERROR:  Possible alternatives: appium_lib
 localhost:~ zhouhaisheng$ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2015年5月30日 笔记
+上面的种种办法 都还没有解决 老子很崩溃啊
+php、 ruby 的示例都弄不了
+打算换种思路再来
+肯定是我什么东西没装上，导致上面各种不行；
+另外 node什么的都得装 据说是。
+
+
+来自豆瓣的：https://www.douban.com/note/517897469/
+装完appium.dmg以后
+自查缺什么：
+1.安卓的 adt-bundle
+	找了个同事的/自己下载了
+2.自己把jdk jre 装了一遍；尼玛 我还升级了mac系统
+3.java-home is not set
+  Android-home is not set
+  参考如下：
+  	https://github.com/pubyun/macdev/blob/master/java.md
+  	http://www.haomou.net/2015/01/06/2015_mac_android/
+  android-home is not set 配置如下：
+  	错误提示是没有添加ANDROID_HOME到环境变量中，我们添加即可，方法：
+	sudo vi ~/.bash_profile
+	追加 下载的adt bundle目录下的sdk目录为ANDROID_HOME，例如：
+	export ANDROID_HOME=/Users/zhouhaisheng/Documents/adt-bundle-mac-x86_64-20140702/sdk
+	然后是配置生效
+	source ~/.bash_profile
+	然后重试一下，我的是成功了！
+ java-home is not set 配置如下：
+ 	我是先看了自己装的 java版本
+ 	localhost:~ zhouhaisheng$ java -version
+	java version "1.8.0_60"
+	Java(TM) SE Runtime Environment (build 1.8.0_60-b27)
+	Java HotSpot(TM) 64-Bit Server VM (build 25.60-b23, mixed mode)
+	
+	然后：
+ 	sudo vi ~/.bash_profile
+	追加：
+	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+	export PATH=${JAVA_HOME}/bin:$PATH
+	然后是配置生效
+	source ~/.bash_profile
+再一次 Appium 自带检测；全部通过 大功告成；~\(≧▽≦)/~
+Last login: Tue May 31 09:57:29 on ttys000
+localhost:~ zhouhaisheng$ '/Applications/Appium.app/Contents/Resources/node/bin/node' '/Applications/Appium.app/Contents/Resources/node_modules/appium/bin/appium-doctor.js'
+Running iOS Checks
+✔ Xcode is installed at /Applications/Xcode.app/Contents/Developer
+✔ Xcode Command Line Tools are installed.
+✔ DevToolsSecurity is enabled.
+✔ The Authorization DB is set up properly.
+✔ Node binary found using .appiumconfig.json at /Applications/Appium.app/Contents/Resources/node/bin/node
+✔ iOS Checks were successful.
+
+Running Android Checks
+✔ ANDROID_HOME is set to "/Users/zhouhaisheng/Documents/adt-bundle-mac-x86_64-20140702/sdk"
+✔ JAVA_HOME is set to "/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home."
+✔ ADB exists at /Users/zhouhaisheng/Documents/adt-bundle-mac-x86_64-20140702/sdk/platform-tools/adb
+✔ Android exists at /Users/zhouhaisheng/Documents/adt-bundle-mac-x86_64-20140702/sdk/tools/android
+✔ Emulator exists at /Users/zhouhaisheng/Documents/adt-bundle-mac-x86_64-20140702/sdk/tools/emulator
+✔ Android Checks were successful.
+
+✔ All Checks were successful
+localhost:~ zhouhaisheng$ 
+
+准备下一步 node那些东西
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2015年5月31日 笔记
+安装 selenimu
+参考如下；http://jaceju.net/2015/06/03/selenium-on-mac/ （这个因为翻墙不能用）
+	https://m.oschina.net/blog/501637
+下载地址：https://pypi.python.org/pypi/selenium#downloads
+执行命令：localhost:~ zhouhaisheng$ cd /Users/zhouhaisheng/Documents/selenium-2.53.2/
+	  localhost:selenium-2.53.2 zhouhaisheng$ python setup.py install
+啊啊啊啊又报错了！：
+running install
+Checking .pth file support in /Library/Python/2.7/site-packages/
+error: can't create or remove files in install directory
+
+The following error occurred while trying to add or remove files in the
+installation directory:
+
+    [Errno 13] Permission denied: '/Library/Python/2.7/site-packages/test-easy-install-4879.pth'
+
+The installation directory you specified (via --install-dir, --prefix, or
+the distutils default setting) was:
+
+    /Library/Python/2.7/site-packages/
+
+Perhaps your account does not have write access to this directory?  If the
+installation directory is a system-owned directory, you may need to sign in
+as the administrator or "root" account.  If you do not have administrative
+access to this machine, you may wish to choose a different installation
+directory, preferably one that is listed in your PYTHONPATH environment
+variable.
+
+For information on other options, you may wish to consult the
+documentation at:
+
+  https://pythonhosted.org/setuptools/easy_install.html
+
+Please make the appropriate changes for your system and try again.
+
+localhost:selenium-2.53.2 zhouhaisheng$ 
+
+看了这个仁兄的解释：https://www.zhihu.com/question/30496889
+重新执行安装，一切搞定
+
+下面是试一下selenium 脚本；
+http://cuiqingcai.com/2599.html
+下载chrom驱动
+http://chromedriver.storage.googleapis.com/index.html?path=2.21/
+下载的驱动又弄不到usr/bin去
+接着：http://www.liuchungui.com/blog/2016/05/10/mac10-dot-11sheng-ji-an-zhuang-openssl/
+
+  	
+  
 
       
       
