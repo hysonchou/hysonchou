@@ -1,0 +1,6 @@
+2015年5月30日
+为了鼓捣自己的Appium 我先安装了 python +selenium
+参考资料：https://m.oschina.net/blog/501637
+这个网址后，知道了 python 还可以用来写 爬虫
+在安装完之后，就试着写了微博的爬虫
+从登陆 到发微博 成功。
