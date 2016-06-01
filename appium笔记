@@ -224,6 +224,21 @@ http://chromedriver.storage.googleapis.com/index.html?path=2.21/
 下载的驱动又弄不到usr/bin去
 接着：http://www.liuchungui.com/blog/2016/05/10/mac10-dot-11sheng-ji-an-zhuang-openssl/
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2015年6月1日
+打开 Appium 客户端
+配置好 ios（app path、force device等等）
+lauch 服务器
+再点击第一行第四个 开始录脚本
+报错：Be sure the Appium server is running with an application opened 
+	by using the "App Path" parameter in Appium.app (along with package
+	and activity for Android) or by connecting with selenium client and 
+	supplying this in the desired capabilities object.
+	
+解决办法：Appium 里的 ios 配置 platform 选择最新版本：8.4
+重新开始录脚本，问题搞定。
+关于为什么 这里platform 必须要选择8.4 是跟本身xcode有关联；再具体为啥就不知道了
+
   	
   
 
