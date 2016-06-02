@@ -4,3 +4,39 @@
 这个网址后，知道了 python 还可以用来写 爬虫
 在安装完之后，就试着写了微博的爬虫
 从登陆 到发微博 成功。
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2016年6月2日
+zhouhaishengdeMacBook-Air:selenium-2.53.2 zhouhaisheng$ python CodeMakerTest.py
+Traceback (most recent call last):
+  File "CodeMakerTest.py", line 28, in <module>
+    wd.find_element_by_name("(null)").click()
+  File "/Library/Python/2.7/site-packages/selenium-2.53.2-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 362, in find_element_by_name
+    return self.find_element(by=By.NAME, value=name)
+  File "/Library/Python/2.7/site-packages/selenium-2.53.2-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 744, in find_element
+    {'using': by, 'value': value})['value']
+  File "/Library/Python/2.7/site-packages/selenium-2.53.2-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 233, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.53.2-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+zhouhaishengdeMacBook-Air:selenium-2.53.2 zhouhaisheng$ 
+
+把 出错的 注释掉后：
+
+zhouhaishengdeMacBook-Air:selenium-2.53.2 zhouhaisheng$ python CodeMakerTest.py
+Traceback (most recent call last):
+  File "CodeMakerTest.py", line 29, in <module>
+    wd.find_element_by_name("more, numbers").click()
+  File "/Library/Python/2.7/site-packages/selenium-2.53.2-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 362, in find_element_by_name
+    return self.find_element(by=By.NAME, value=name)
+  File "/Library/Python/2.7/site-packages/selenium-2.53.2-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 744, in find_element
+    {'using': by, 'value': value})['value']
+  File "/Library/Python/2.7/site-packages/selenium-2.53.2-py2.7.egg/selenium/webdriver/remote/webdriver.py", line 233, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium-2.53.2-py2.7.egg/selenium/webdriver/remote/errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+再把出错的注释掉 运行指令一切ok
+
